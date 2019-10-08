@@ -32,3 +32,20 @@ du -sh [指定目录/文件]
 
 
 ---
+
+- 解压缩
+
+> 解压tar.gz和tar包到当前目录
+```
+tar -xvf test.tar.gz
+tar -xvf test.tar 
+```
+
+> 解压到指定目录（前提是dir必须存在）
+
+```
+tar -xvf test.tar.gz -C dir
+tar -xvf test.tar -C dir 
+```
+
+---
