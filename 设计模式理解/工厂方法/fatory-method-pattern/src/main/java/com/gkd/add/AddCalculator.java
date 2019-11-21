@@ -1,4 +1,6 @@
-package com.gkd;
+package com.gkd.add;
+
+import com.gkd.ICalculator;
 
 /**
  * @author Weishuo Zhang

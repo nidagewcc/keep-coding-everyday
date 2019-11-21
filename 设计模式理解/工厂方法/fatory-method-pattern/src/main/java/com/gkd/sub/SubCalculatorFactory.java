@@ -1,4 +1,7 @@
-package com.gkd;
+package com.gkd.sub;
+
+import com.gkd.ICalculator;
+import com.gkd.ICalculatorFactory;
 
 /**
  * @author Weishuo Zhang
