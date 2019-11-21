@@ -7,6 +7,12 @@ package com.gkd;
  */
 public class CalculatorFactory {
 
+    /**
+     * 如果增加一种计算类型，就得修改此工厂逻辑
+     *
+     * @param calcType
+     * @return
+     */
     public static ICalculator create(char calcType) {
         ICalculator calculator = null;
         switch (calcType) {
