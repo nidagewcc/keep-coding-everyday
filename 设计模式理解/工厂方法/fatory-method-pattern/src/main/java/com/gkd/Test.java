@@ -38,5 +38,20 @@ public class Test {
         ICalculatorFactory factory4 = new DivideCalculatorFactory();
         ICalculator calculator4 = factory4.create();
         System.out.println(calculator4.calculate(1d, 2d));
+
+        // 如果要添加一种运算，就得添加ICalculator接口的实现，以及工厂ICalculatorFactory新的实现
+        // 符合开闭原则
+
+        /**
+         * 优点：
+         * 1. 客户端不依赖产品类的示例如何被创建、实现的细节
+         * 2. 新增产品，只需要创建对应实现和工厂，符合开闭原则
+         * 3. 创建对象的细节完全封装到了工厂内部，所有具体工厂都继承了抽象工厂，完美提现了多态
+         *
+         *
+         * 缺点：
+         * 1. 增加产品时，也必须增加新的工厂类，有额外的开销，创建类过多
+         * 2. 增加了系统的抽象性和复杂度
+         */
     }
 }
