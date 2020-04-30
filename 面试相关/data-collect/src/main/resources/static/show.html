@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css"/>
+</head>
+<body>
+
+    <canvas id="myChart" width="400" height="400"></canvas>
+
+
+<!--<script src="/data-collect/js/vue.js" type="text/javascript" charset="utf-8"></script>-->
+<!--<script src="/data-collect/js/vue-resource.min.js" type="text/javascript" charset="utf-8"></script>-->
+<!--<script src="/data-collect/js/index.js" type="text/javascript" charset="utf-8"></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.js" type="text/javascript" charset="utf-8"></script>
+<!--<script src="/data-collect/js/show.js" type="text/javascript" charset="utf-8"></script>-->
+
+<script>
+//概览曲线图
+var ctx_c1=document.getElementById("myChart").getContext("2d");
+var config_c1={
+    type: 'bar',
+    data:{
+        labels:[0,0,0,0,0],
+        datasets:[
+            {
+                type: 'line',
+                label:'CPU使用率',
+                borderColor: 'rgba(0, 238, 0, 1)',
+                fill:false,
+                yAxisID: 'y-axis-1',
+                data:[0,0,0,0,0]
+            }
+        ]
+    },
+    options: {
+        responsive: true,
+        hoverMode: 'index',
+        stacked: true,
+        title: {
+            display: true,
+            text: '概览曲线图',
+            fontSize:35,
+            fontColor: "#000",
+        },
+        scales: {
+            xAxes: [{
+                type: 'time',
+                time: {
+                    displayFormats: {
+                        quarter: 'h:mm a'
+                    }
+                },
+                scaleLabel: {
+                    display: false,
+                    labelString: '时间(5分钟)'
+                }
+            }],
+            yAxes: [{
+                type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
+                display: true,
+                position: 'left',
+                id: 'y-axis-1',
+                ticks: {
+                    beginAtZero:true
+                },
+                scaleLabel: {
+                    display: true,
+                    labelString: '百分比(%)'
+                }
+            }],
+            elements: {
+                line: {
+                    tension: 1, // disables bezier curves
+                }
+            }
+        },
+        tooltips: {
+            mode: 'index',
+            intersect: true
+        }
+    }
+
+};
+var c1 = new Chart(ctx_c1, config_c1);
+function reload_c1(){
+    for(var i=0;i<5;i++){
+        config_c1.data.datasets[i].data=[]
+    }
+    config_c1.data.labels=[]
+    $.get('/api/dataset',para,function(result){
+        var i=0;
+        result.data.reverse();
+        console.log("c1_result.data:")
+        console.log(result.data)
+        for (item in result.data){
+            config_c1.data.datasets[0].data[i]=result.data[item].cpu;
+            config_c1.data.datasets[1].data[i]=result.data[item].mem;
+            config_c1.data.datasets[2].data[i]=result.data[item].io;
+            config_c1.data.datasets[3].data[i]=result.data[item].failrate;
+            config_c1.data.datasets[4].data[i]=result.data[item].allrate;
+            config_c1.data.labels[i]=result.data[item].time;
+            i++;
+        }
+        c1.update();
+        console.log("config_c1.data.datasets:")
+        console.log(config_c1.data.datasets)
+    });
+};
+</script>
+
+</body>
+</html>
