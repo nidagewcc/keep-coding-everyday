@@ -1,13 +1,13 @@
-package com.gkd;
+### 冒泡排序
 
-import java.util.Arrays;
+选取一个基准数，然后从右边开始查找比它小的，再从左边查找比它大的。再利用递归特性，分别递归左半部分和右半部分进行排序，最终达到排序效果
 
-public class Main {
-
-    public static void main(String[] args) {
+程序示例：
+```java
+public static void main(String[] args) {
         int[] arr = {21, 32, 43, 98, 54, 45, 23, 4, 66, 86};
 
-        quickSort1(arr, 0, 9);
+        quickSort(arr, 0, 9);
 
         System.out.println(Arrays.toString(arr));
     }
@@ -41,40 +41,13 @@ public class Main {
 
             }
             s[i] = x;
-            System.out.println(Arrays.toString(s));
+
             // 递归调用
             quickSort(s, left, i - 1);
             quickSort(s, i + 1, right);
-
-
         }
     }
+```
 
-    // 背诵写一遍
-    private static void quickSort1(int[] arr, int left, int right) {
-
-        if (left < right) {
-            int i = left, j = right, x = arr[i];
-            while (i < j) {
-                while (i < j && x <= arr[j]) {
-                    j--;
-                }
-                if (i < j) {
-                    arr[i++] = arr[j];
-                }
-                while (i < j && x >= arr[i]) {
-                    i++;
-                }
-                if (i < j) {
-                    arr[j--] = arr[i];
-                }
-            }
-
-            arr[i] = x;
-
-            System.out.println(Arrays.toString(arr));
-            quickSort1(arr, left, j - 1);
-            quickSort1(arr, i + 1, right);
-        }
-    }
-}
+时间复杂度分析
+// TODO
