@@ -1,8 +1,13 @@
 
 M
 squid:S106"9Replace this use of System.out or System.err by a logger.(×Æáî
-gsquid:S3776"RRefactor this method to reduce its Cognitive Complexity from 17 to the 15 allowed.(û”Œ¢
-4squid:S1659"Declare "j" on a separate line.(Øöı¥
-4squid:S1659"Declare "x" on a separate line.(Øöı¥
-4squid:S1659"Declare "j" on a separate line.(ş˜¦’
-4squid:S1659"Declare "x" on a separate line.(ş˜¦’
+lsquid:S3776"RRefactor this method to reduce its Cognitive Complexity from 17 to the 15 allowed.(úû•Êşÿÿÿÿ
+4squid:S1659"Declare "j" on a separate line.(•Ø„ë
+nsquid:S3776"RRefactor this method to reduce its Cognitive Complexity from 17 to the 15 allowed.(È’à‘8åè£œ.
+@squid:S1659"Declare "j" on a separate line.(Ñ¨®ùÿÿÿÿ8Â”œ.
+4squid:S1659"Declare "x" on a separate line.(•Ø„ë
+@squid:S1659"Declare "x" on a separate line.(Ñ¨®ùÿÿÿÿ8Â”œ.
+T
+squid:S106"9Replace this use of System.out or System.err by a logger.(×Æáî8½´·œ.
+T
+squid:S106"9Replace this use of System.out or System.err by a logger.(¼ÇÅŸ8´Ü†œ.
